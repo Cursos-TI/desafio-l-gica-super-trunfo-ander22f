@@ -193,7 +193,8 @@ void compararcartas(){ // Área para comparação entre as cartas
   
 
 int main() {
- 
+// Deixei comentado as funções de entrada de dados para facilitar os testes, mas você pode descomentar para fazer a entrada de dados manualmente.
+
 //entradadadoscarta01(); // Função para entrada de dados da carta 01
 //entradadadoscarta02(); // Função para entrada de dados da carta 02
 
