@@ -143,51 +143,65 @@ void cauculosupercarta2(){ // Área para cauloculo do Super Poder da carta 02
     supercarta2 = (float) populacao2 + turismo2 + area2 + pib2 + pibpc02 - densidadep02;
   }
 
-void compararcartas(){ // Área para comparação entre as cartas
+void compararcartas(){ // Área para comparação entre as cartas (Todos os atributos.)
     printf("-- COMPARAÇÃO ENTRE AS CARTAS --\n");
 
       
     
       if (populacao1 > populacao2) {
         printf("A carta %s %s Venceu com maior população.\n", codigo1, cidade1);
-      } else { // usei %s duas vezes para exibir o código e a cidade da carta vencedora.
+      } else if (populacao1 < populacao2) { // usei %s duas vezes para exibir o código e a cidade da carta vencedora.
         printf("A carta %s %s Venceu com maior população.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (turismo1 > turismo2) {
         printf("A carta %s %s Venceu com mais pontos turísticos.\n", codigo1, cidade1);
-      } else {
+      } else if (turismo1 < turismo2) {
         printf("A carta %s %s Venceu com mais pontos turísticos.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (area1 > area2) {
             printf("A carta %s %s Venceu com a maior área.\n", codigo1, cidade1);
-      } else {
+      } else if (area1 < area2) {
             printf("A carta %s %s Venceu com a maior área.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (pib1 > pib2) {
             printf("A Carta %s %s Venceu com o maior PIB.\n", codigo1, cidade1);
-      } else { 
+      } else if (pib1 < pib2) { 
             printf("A Carta %s %s Venceu com o maior PIB.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (densidadep01 < densidadep02) {
             printf("A Carta %s %s Venceu com a menor densidade populacional.\n", codigo1, cidade1);
-      } else {
+      } else if (densidadep01 > densidadep02) {
             printf("A Carta %s %s Venceu com a menor densidade populacional.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (pibpc01 > pibpc02) {
             printf("A Carta %s %s Venceu com o maior PIB per capita.\n", codigo1, cidade1);
-      } else {
+      } else if (pibpc01 < pibpc02) {
             printf("A Carta %s %s Venceu com o maior PIB per capita.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
       if (supercarta1 > supercarta2) {
             printf("A Carta %s %s Venceu com o maior Super Poder.\n", codigo1, cidade1);
-      } else {
+      } else if (supercarta1 < supercarta2) {
             printf("A Carta %s %s Venceu com o maior Super Poder.\n", codigo2, cidade2);
+      } else {
+            printf("As Cartas EMPATARAM!!\n");
       }
 
 
@@ -287,6 +301,10 @@ void escolhaatributo(){
             printf("As cartas Empataram\n");
       }
             break;
+ case 8:
+      printf("Disputa Total!!\n");
+      compararcartas ();
+            break;
       
       default: 
             printf("Escolha invalida!\n");
@@ -316,6 +334,7 @@ switch (opcaomn1)
 case 1:
       exibirdadoscarta01();
       exibirdadoscarta02();
+      printf("8. Disputa Total\n");
       escolhaatributo();
 
       break;
