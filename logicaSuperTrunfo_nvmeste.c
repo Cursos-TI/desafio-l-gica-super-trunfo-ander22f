@@ -27,7 +27,7 @@
 
   // Variáveis escolhas menus
 
-  int opcaomn1, opcaomn2, atributoesc1, atributoesc2;
+  int opcaomn1, opcaomn2, atributoesc1, atributoesc2, escolhaFinal;
 
   // Variáveis para armazenar os resultados das comparações de 2 atributos
 
@@ -471,9 +471,22 @@ void escoha2atributos(){ // Área para comparação entre as cartas (Dois atribu
        }
     }
 
+void menuFinal(){
+  
+      printf("\nDeseja sair ou jogar novamente?\n");
+      printf("1 - Jogar novamente\n");
+      printf("0 - Sair\n");
+      scanf("%d", &escolhaFinal);
+      }
+      
+      
+
 
 int main() {
 
+      do
+      {
+      
     // Chamada das funções para entrada de dados das cartas. Deixei comentado para facilitar os testes, mas caso queira testar a entrada de dados, basta descomentar.
 // entradadadoscarta01 (); // Chamada da função para entrada de dados da carta 01.
 // entradadadoscarta02 (); // Chamada da função para entrada de dados da carta 02.
@@ -491,8 +504,14 @@ printf("### SUPER TRUMFO EM C ###\n\n"); // Exibição do menu principal do jogo
 printf("1. INICIAR JOGO\n");
 printf("2. COMO JOGAR\n");
 printf("3. EXIBIR CARTAS\n");
-printf("4. SAIR\n");
+printf("0. SAIR\n");
 scanf("%d", &opcaomn1);
+
+if (opcaomn1 < 0 || opcaomn1 > 3) // Verificação para garantir que o usuário escolha uma opção válida no menu principal.
+{
+      printf("Opção inválida! Escolha uma opção válida.\n");
+      continue; // Retorna ao início do loop para exibir o menu novamente.
+}
 
 switch (opcaomn1) // Estrutura de controle para o menu principal, onde o usuário pode escolher iniciar o jogo, ver as regras ou sair.
 {
@@ -502,6 +521,12 @@ case 1:
       printf("2. Disputa de 2 atributos.\n");
       printf("3. Disputa Total\n");
       scanf("%d", &opcaomn2);
+
+      if (opcaomn2 < 1 || opcaomn2 > 3) // Verificação para garantir que o usuário escolha uma opção válida no menu de comparação.
+      {
+            printf("Opção inválida! Escolha uma opção válida.\n");
+            continue; // Retorna ao início do loop para exibir o menu novamente.
+      }
       
       switch (opcaomn2) // Estrutura de controle para o menu de comparação, onde o usuário pode escolher entre comparar um atributo, dois atributos ou todos os atributos.
       {
@@ -509,17 +534,51 @@ case 1:
       printf("--- DISPUTA SIMPLES ---\n\n"); // Aqui o usuário escolhe apenas um atributo para comparar entre as cartas.
       escolhaatributo();
 
+      menuFinal(); // Chamada da função para o menu final, onde o usuário pode escolher jogar novamente ou sair.
+            if (escolhaFinal == 1) {
+                  continue; // Retorna ao início do loop para iniciar um novo jogo.
+            } else if (escolhaFinal == 0) {
+                  printf("SAINDO. . . .\n");
+                  return 0; // Sai do loop e encerra o programa.
+            } else {
+                  printf("Opção inválida! Saindo do jogo.\n");
+                  return 0; // Sai do loop e encerra o programa.
+            }
+
+
         break;
 
       case 2:
       printf("--- DISPUTA DE DOIS ATRIBUTOS ---\n\n"); // Aqui o usuário escolhe dois atributos para comparar entre as cartas, e ganha quem tiver a maior soma dos valores dos atributos escolhidos.
       escoha2atributos();
 
+      menuFinal(); // Chamada da função para o menu final, onde o usuário pode escolher jogar novamente ou sair.
+            if (escolhaFinal == 1) {
+                  continue; // Retorna ao início do loop para iniciar um novo jogo.
+            } else if (escolhaFinal == 0) {
+                  printf("SAINDO. . . .\n");
+                  return 0; // Sai do loop e encerra o programa.
+            } else {
+                  printf("Opção inválida! Saindo do jogo.\n");
+                  return 0; // Sai do loop e encerra o programa.
+            }
+
         break;
       
       case 3:
       printf("--- DISPUTA TOTAL ---\n\n"); // Aqui o sistema compara todos os atributos das cartas, exibe o vencedor em cada comparação.
       compararcartas ();
+
+      menuFinal(); // Chamada da função para o menu final, onde o usuário pode escolher jogar novamente ou sair.
+            if (escolhaFinal == 1) {
+                  continue; // Retorna ao início do loop para iniciar um novo jogo.
+            } else if (escolhaFinal == 0) {
+                  printf("SAINDO. . . .\n");
+                  return 0; // Sai do loop e encerra o programa.
+            } else {
+                  printf("Opção inválida! Saindo do jogo.\n");
+                  return 0; // Sai do loop e encerra o programa.
+            }
 
         break;
 
@@ -532,15 +591,19 @@ case 1:
 
 case 2:
       mostrarregras ();
+      printf("\nEntre qualquer numero para voltar ao menu principal\n");
+      scanf("%d", &opcaomn2);
       break;
 
 case 3:
       exibirdadoscarta01();
       exibirdadoscarta02();
+      printf("\nEntre qualquer numero para voltar ao menu principal\n");
+      scanf("%d", &opcaomn2);
 
       break;
 
-case 4:
+case 0:
       printf("SAINDO. . . .\n");
        break;
 
@@ -549,6 +612,7 @@ default:
       break;
 }
 
+} while (opcaomn1 !=0); // O loop do menu principal continua até que o usuário escolha a opção de sair (opção 4).
 
 
   
